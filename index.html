@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+   <head>
+    <title>Penjualan Barang</title>
+<style>
+tr{
+    border:1px solid black;
+    
+}
+</style>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<div class="hidden-xs"><br>&nbsp;</div>
+<nav class="navbar bg-inverse fixed-top bg-faded" style="color:#D72D34 !important" align="center">
+    <div class="row" style="background-color:blue">
+        <div class="col-md-12 mx-auto" style="height:50px;color:white">
+          <h4>Hendrik Purnama Yuniar</h4>
+    </div>
+</nav>
+
+<section id="produk">
+    <div class="container">
+        <div class="row">
+            <h3>Penjualan Barang</h3>
+        </div>
+        <div class="container" style="border:1px solid black">
+        <br>
+            <div class="row">
+                <div class="col-sm-2">
+                    Kode Barang :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="kode_barang" id="kode_barang">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-2">
+                     Kode Barcode :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="kode_barcode" id="kode_barcode">
+                </div>
+            </div>
+            <br> <div class="row">
+                <div class="col-sm-2">
+                    Nama Barang :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="nama_barang" id="nama_ barang">
+                </div>
+            </div>
+            <br> <div class="row">
+                <div class="col-sm-2">
+                    Kelompok :
+                </div>
+                <div class="col-sm-2"> <select name='kelompok'>
+                        <option> </option>
+                    <option value="Sabun">Sabun</option>
+                    <option value="Shampo">Shampo</option>                    
+                </select>
+                    </div>
+            </div>
+            <br> <div class="row">
+                <div class="col-sm-2">
+                    Satuan :
+                </div>
+                <div class="col-sm-2"> <select name='satuan'>
+                        <option></option>
+                    <option value="Pcs">Pcs</option>                   
+                </select>
+                    </div>
+            </div>
+            <br>  <div class="row">
+                <div class="col-sm-2">
+                     Harga Beli :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="harga_beli" id="harga_beli">
+                </div>
+            </div>
+            <br> <div class="row">
+                <div class="col-sm-2">
+                    Harga Jual :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="harga_jual" id="harga_jual">
+                </div>
+            </div>
+            <br> <div class="row">
+                <div class="col-sm-2">
+                    Diskon Jual :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="diskon_jual" id="diskon_jual">%
+                </div>
+            </div>
+            <br> <div class="row">
+                <div class="col-sm-2">
+                    Stock :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="stok" id="stock">
+                </div>
+            </div>
+            <br> <div class="row">
+                <div class="col-sm-2">
+                    Keterangan :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="keterangan" id="keterangan">
+                </div>
+            </div>
+            <br>        
+            
+            <div class="row">
+                <div class="col-sm-1">
+                    <button class="btn btn-primary" onclick="simpan()">Simpan</button>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-primary" onclick="edit()">Edit</button>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-primary" onclick="hapus()">Hapus</button>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-primary" onclick="tutup()">Tutup</button>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-primary" onclick="cari()">Cari</button>
+                </div>
+            </div>
+        
+            <br>
+        </div>
+    </div>
+</section>
+
+<section id="Keranjang Pembelian">
+    <div class="container">
+        <div class="row">
+           <br> <div class="row">
+                <div class="col-sm-2">
+                    Cari Nama Barang :
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="cari" id="cari">
+                </div>
+            </div>
+           <br>
+        </div>
+        <div class="container">
+            <table class="table" style="width:600px;" id="myTable">
+                <th style="text-align:center">
+                    Kode_Barang
+                </th>
+                <th style="text-align:center">
+                    Kode_Barcode
+                </th>
+                <th style="text-align:center">
+                    Nama_barang
+                </th>
+                <th style="text-align:center">
+                    Kelompok
+                </th>
+                <th style="text-align:center">
+                    Satuan
+                </th>
+                <th style="text-align:center">
+                    Harga_Beli
+                </th>
+                <th style="text-align:center">
+                    Harga_jual
+                </th>
+                <th style="text-align:center">
+                    Diskon_jual
+                </th>
+                <th style="text-align:center">
+                    Stock
+                </th>
+                <th style="text-align:center">
+                    Keterangan
+                </th>
+                <tr id="input_chart">
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+function simpan(){
+    var kode_barang = $('#kode_barang').val();
+    var kode_barcode = $('#kode_barcode').val();
+    var nama_barang = $('#nama_barang').val();
+    var kelompok = $('select[name=kelompok] option').filter(':selected').val();
+    var satuan = $('select[name=satuan] option').filter(':selected').val();
+    var harga_beli = $('#harga_beli').val();
+    var harga_jual = $('#harga_jual').val();
+    var diskon_jual = $('#diskon_jual').val();
+    var stock = $('#stock').val();
+    var keterangan = $('#keterangan').val();    
+    
+    //keterangan  = $('#keterangan').html();
+   // harga_jual    = parseInt(harga_jual);
+   // diskon_jual = parseInt(diskon_jual);
+   // keterangan  = parseInt(keterangan);
+    //var keterangans = harga_jual - diskon_jual;
+    //keterangan = harga_jual - diskon_jual;
+    $('#myTable').append('<tr><td align="right">'+kode_barang+'</td><td>'+kode_barcode+'</td><td align="right">'+nama_barang+'</td><td align="right">'+kelompok+'</td><td align="right">'+satuan+'</td><td align="right">'+harga_beli+'</td><td align="right">'+harga_jual+'</td><td align="right">'+diskon_jual+'</td><td align="right">'+stock+'</td><td align="right">'+keterangan+'</td></tr>');
+    //$('#keterangan').html(keterangan);
+};    
+   
+</script>
